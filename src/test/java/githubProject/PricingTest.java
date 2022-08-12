@@ -12,14 +12,18 @@ public class PricingTest {
 
     @BeforeAll
     static void configure(){
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = "1440x1280";
     }
 
     @Test
-    void searchPricing(){
+    void searchPricing() {
         open("https://github.com");
         $(byText("Pricing")).hover();
         $(byText("Compare plans")).click();
+        SelenideElement element = $("h1.h2-mktg");
+        actions().scrollToElement(getFocusedElement());
         $("h1.h2-mktg").shouldHave(text("Choose the plan that’s right for you."));
     }
-}
+
+
+    }
